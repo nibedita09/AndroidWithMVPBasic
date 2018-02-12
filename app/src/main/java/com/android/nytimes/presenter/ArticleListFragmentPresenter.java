@@ -11,6 +11,6 @@ import java.util.List;
 
 public interface ArticleListFragmentPresenter {
 
-    List<Result> getAllArticles(String period);
+    void getAllArticles(String period);
 
 }

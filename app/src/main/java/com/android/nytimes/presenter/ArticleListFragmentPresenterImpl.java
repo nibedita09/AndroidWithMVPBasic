@@ -24,7 +24,7 @@ public class ArticleListFragmentPresenterImpl implements ArticleListFragmentPres
     }
 
     @Override
-    public List<Result> getAllArticles(String period) {
+    public void getAllArticles(String period) {
 
         mArticleListFragmentView.showLoadingSpinner();
         mNYArticleServiceInteractor.getArticles(period, new RestRequestListener<List<Result>>() {
@@ -44,6 +44,5 @@ public class ArticleListFragmentPresenterImpl implements ArticleListFragmentPres
 
             }
         });
-        return null;
     }
 }
