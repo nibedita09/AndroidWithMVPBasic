@@ -69,13 +69,6 @@ public class ArticleListAdapter<T> extends RecyclerView.Adapter<ArticleListAdapt
             holder.mTitle.setText(result.getTitle());
             holder.mSubTitle.setText(result.getPublishedDate());
 
-           /* BitmapFactory.Options options = new BitmapFactory.Options();
-            options.inJustDecodeBounds = true;
-            BitmapFactory.decodeResource(holder.mImageView.getResources(), holder.mImageView.getId(), options);
-            int imageHeight = options.outHeight;
-            int imageWidth = options.outWidth;
-            String imageType = options.outMimeType;*/
-
             mPicasso.load(result.getMedia().get(0).getMediaMetadata().get(0).getUrl())
                     .resize(50,50)
                     .into(holder.mImageView);
