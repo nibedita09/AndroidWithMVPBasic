@@ -79,6 +79,8 @@ public class ArticleListFragment extends BaseFragment implements ArticleListFrag
         if(mArticleListAdapter == null)
             mArticleListAdapter = new ArticleListAdapter(articleList, this, Picasso.with(getActivity()), this);
         mRecyclerView.setAdapter(mArticleListAdapter);
+        if(mFragmentCallback.isTwoPane())
+            onItemClick(articleList.get(0).getUrl());
     }
 
     @Override
@@ -118,14 +120,13 @@ public class ArticleListFragment extends BaseFragment implements ArticleListFrag
 
     @Override
     public void onItemClick(String url) {
+        final Fragment detailFragment = new ArticleDetailFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("url", url);
+        detailFragment.setArguments(bundle);
         if(mFragmentCallback.isTwoPane()){
-
-
+            mFragmentCallback.updateRightPane(detailFragment);
         }else{
-            final Fragment detailFragment = new ArticleDetailFragment();
-            Bundle bundle = new Bundle();
-            bundle.putString("url", url);
-            detailFragment.setArguments(bundle);
             mFragmentCallback.navigateTo(detailFragment);
         }
     }

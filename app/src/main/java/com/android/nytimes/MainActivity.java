@@ -97,6 +97,11 @@ public class MainActivity extends AppCompatActivity implements FragmentCallback 
     }
 
     @Override
+    public void updateRightPane(Fragment targetFragment) {
+        mFragmentManager.beginTransaction().replace(R.id.container_detail, targetFragment).addToBackStack(null).commit();
+    }
+
+    @Override
     public boolean isTwoPane() {
         return twoPane;
     }
@@ -104,6 +109,7 @@ public class MainActivity extends AppCompatActivity implements FragmentCallback 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-
+        if(isTwoPane())
+            this.finish();
     }
 }

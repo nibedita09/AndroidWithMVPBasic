@@ -12,6 +12,7 @@ public interface FragmentCallback {
     void dismissSpinner();
     void showErrorDialog(String title, String message, ErrorDialogAction action);
     void navigateTo(Fragment targetFragment);
+    void updateRightPane(Fragment targetFragment);
     boolean isTwoPane();
 
     interface ErrorDialogAction {
